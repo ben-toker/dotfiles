@@ -116,7 +116,42 @@ return {
           end,
         },
       })
+
+      -- Null-ls configuration (for Prettier and other formatters)
+      local null_ls = require("null-ls")
+
+      null_ls.setup({
+        sources = {
+          null_ls.builtins.formatting.prettier, -- Prettier for JS, TS, HTML, CSS, JSON
+          null_ls.builtins.diagnostics.eslint, -- ESLint for JS/TS linting
+        },
+      })
+
+      -- Enable format on save
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        pattern = { "*.js", "*.jsx", "*.ts", "*.tsx", "*.json", "*.css", "*.html", "*.md" },
+        callback = function()
+          vim.lsp.buf.format({ async = false })
+        end,
+      })
     end
+  },
+
+  -- Null-ls plugin
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
+
+  -- Mason integration for null-ls
+  {
+    "jay-babu/mason-null-ls.nvim",
+    dependencies = { "williamboman/mason.nvim", "jose-elias-alvarez/null-ls.nvim" },
+    config = function()
+      require("mason-null-ls").setup({
+        ensure_installed = { "prettier", "eslint" },
+      })
+    end,
   },
 }
 

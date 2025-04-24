@@ -60,3 +60,16 @@ vim.g["vimtex_view_method"] = "skim"
 vim.g["vimtex_view_skim_sync"] = 1
 vim.g["vimtex_view_skim_activate"] = 1
 
+
+-- remap Normal‑mode cursor keys to O‑K‑L‑; block
+vim.keymap.set('n', 'o', 'k', { noremap = true, silent = true })   -- o → up
+vim.keymap.set('n', 'k', 'h', { noremap = true, silent = true })   -- k → left
+vim.keymap.set('n', 'l', 'j', { noremap = true, silent = true })   -- l → down
+vim.keymap.set('n', ';', 'l', { noremap = true, silent = true })   -- ; → right
+
+-- (optional) mirror in Visual mode if you want selection movement too
+vim.keymap.set('v', 'o', 'k', { noremap = true, silent = true })
+vim.keymap.set('v', 'k', 'h', { noremap = true, silent = true })
+vim.keymap.set('v', 'l', 'j', { noremap = true, silent = true })
+vim.keymap.set('v', ';', 'l', { noremap = true, silent = true })
+

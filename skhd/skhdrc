@@ -107,25 +107,25 @@
 
 # focus window on current monitor or move across diff monitors if no 
 # windows are available within current monitor
-alt - j : yabai -m window --focus west || yabai -m display --focus prev
-alt - k : yabai -m window --focus south || yabai -m display --focus next
-alt - i : yabai -m window --focus north || yabai -m display --focus prev
-alt - l : yabai -m window --focus east || yabai -m display --focus next
+ctrl - j : yabai -m window --focus west || yabai -m display --focus prev
+ctrl - k : yabai -m window --focus south || yabai -m display --focus next
+ctrl - i : yabai -m window --focus north || yabai -m display --focus prev
+ctrl - l : yabai -m window --focus east || yabai -m display --focus next
 
 
 #### move managed window
 
 # Move window left; if no space, send to previous monitor
-shift + alt - j : yabai -m window --warp west || yabai -m window --display prev
+shift + ctrl - j : yabai -m window --warp west || yabai -m window --display prev
 
 # Move window up; if no space, send to previous monitor
-shift + alt - i : yabai -m window --warp north || yabai -m window --display prev
+shift + ctrl - i : yabai -m window --warp north || yabai -m window --display prev
 
 # Move window down; if no space, send to next monitor
-shift + alt - k : yabai -m window --warp south || yabai -m window --display next
+shift + ctrl - k : yabai -m window --warp south || yabai -m window --display next
 
 # Move window right; if no space, send to next monitor
-shift + alt - l : yabai -m window --warp east || yabai -m window --display next
+shift + ctrl - l : yabai -m window --warp east || yabai -m window --display next
 
 # Increase the split ratio (give more space to the focused window)
 #cmd + alt - = : yabai -m window --resize abs:20:0  # Increase horizontally
@@ -148,13 +148,13 @@ cmd + ctrl - 4 : yabai -m window --space 4
 cmd + ctrl - 5 : yabai -m window --space 5
 
 # Tiling layouts
-alt - r : yabai -m space --rotate 90
-alt - e : yabai -m window --toggle split
+ctrl - r : yabai -m space --rotate 90
+ctrl - e : yabai -m window --toggle split
 # float / unfloat window and center on screen
-alt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
+ctrl - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
 
 #open apps
 #cmd - shift - a : open -a -n "Arc Browser"
 cmd - return : open -a iTerm
 cmd + shift - a : open -a "Arc"
-
+cmd + shift - m : open -a "Spotify"
