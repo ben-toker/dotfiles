@@ -105,6 +105,23 @@
 #    "qutebrowser"
 # ]
 
+# switch yabai mode
+
+# toggle stack ↔ bsp on the current space
+shift + ctrl - h : yabai -m config layout bsp
+shift + ctrl - 0x29 : yabai -m space --layout stack && yabai -m window --focus stack.first
+
+# focus the previous window in the stack
+ctrl - 0x29 : yabai -m window --focus stack.prev
+
+# focus the next window in the stack
+ctrl - 0x27 : yabai -m window --focus stack.next
+
+
+
+
+
+
 # focus window on current monitor or move across diff monitors if no 
 # windows are available within current monitor
 ctrl - j : yabai -m window --focus west || yabai -m display --focus prev
@@ -136,9 +153,9 @@ shift + ctrl - l : yabai -m window --warp east || yabai -m window --display next
 #cmd + alt + shift - - : yabai -m window --resize abs:0:-20  # Decrease vertically
 
 # Maximize, center, and minimize windows
-alt - f : yabai -m window --toggle zoom-parent
-alt - c : yabai -m window --grid 4:4:1:1:2:2
-alt - m : yabai -m window --minimize
+cmd + alt - f : yabai -m window --toggle zoom-parent
+cmd + alt - c : yabai -m window --grid 4:4:1:1:2:2
+cmd + alt - m : yabai -m window --minimize
 
 # Move windows to specific spaces
 cmd + ctrl - 1 : yabai -m window --space 1
@@ -156,5 +173,6 @@ ctrl - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
 #open apps
 #cmd - shift - a : open -a -n "Arc Browser"
 cmd - return : open -a iTerm
-cmd + shift - a : open -a "Arc"
+cmd + shift - return : open -a "Visual Studio Code"
+cmd + shift - a : open -a "zen"
 cmd + shift - m : open -a "Spotify"

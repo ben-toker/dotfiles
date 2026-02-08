@@ -30,10 +30,13 @@ vim.opt.tabstop = 2
 
 -- nvim-tree binds 
 vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-h>', '<leader>h', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-j>', '<leader>j', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-k>', '<leader>k', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-l>', '<leader>l', { noremap = true, silent = true })
+
+
+
 
 -- nvim-ale config
 vim.cmd [[
@@ -60,7 +63,21 @@ vim.g["vimtex_view_method"] = "skim"
 vim.g["vimtex_view_skim_sync"] = 1
 vim.g["vimtex_view_skim_activate"] = 1
 
-
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "tex",
+  callback = function()
+    vim.schedule(function()
+      -- Force the underscore to be a 'Label' (neutral color) inside TikZ
+      vim.cmd([[syntax match texSpecialChar /_/ containedin=texTikzZone]])
+      
+      -- Specifically tell the error engine to ignore underscores in this zone
+      vim.cmd([[syntax cluster texErrorGroup add=texSpecialChar]])
+      
+      -- Restore general error highlighting that 'tex_no_error' might have killed
+      vim.cmd([[highlight link texError Error]])
+    end)
+  end,
+})
 -- remap Normal‑mode cursor keys to O‑K‑L‑; block
 vim.keymap.set('n', 'o', 'k', { noremap = true, silent = true })   -- o → up
 vim.keymap.set('n', 'k', 'h', { noremap = true, silent = true })   -- k → left
