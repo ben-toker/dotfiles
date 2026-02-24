@@ -1,5 +1,7 @@
 vim.g.mapleader = ' '
 
+
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({
@@ -17,6 +19,8 @@ require("lazy").setup("j.plugins")
 
 vim.o.background = "dark" -- or "light" for light mode
 vim.cmd([[colorscheme gruvbox]])
+
+vim.opt.termguicolors=true
 
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.number = true
