@@ -1,3 +1,20 @@
+sudo yabai --load-sa
+
+# Create spaces if they don't exist (e.g., ensure 5 spaces exist)
+desired_spaces=5
+current_spaces=$(yabai -m query --spaces | jq '. | length')
+
+if [ "$current_spaces" -lt "$desired_spaces" ]; then
+    for i in $(seq 1 $((desired_spaces - current_spaces))); do
+        yabai -m space --create
+    done
+fi
+
+# Signal to force BSP whenever a space is created or focused
+yabai -m signal --add event=space_changed action="yabai -m space --layout bsp"
+yabai -m signal --add event=display_changed action="yabai -m space --layout bsp"
+
+
 # bsp or float (default: float)
 yabai -m config layout bsp
 
@@ -6,6 +23,9 @@ yabai -m config window_placement second_child
 
 # set focus follows mouse mode (default: off, options: off, autoraise, autofocus)
 yabai -m config focus_follows_mouse off
+
+# Mouse follows focus (the opposite of focus follows mouse)
+yabai -m config mouse_follows_focus on
 
 # hyprland feel
 yabai -m config space_wrap on
@@ -27,6 +47,16 @@ yabai -m rule --add app="^App Store$" manage=off
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Messages$" manage=off
 yabai -m rule --add app="^Finder$" manage=off
+
+
+# switch focus
+# -- Switch between spaces even if full screen
+ctrl - 1 : index=1; eval "$(yabai -m query --spaces | jq --argjson index "${index}" -r '(.[] | select(.index == $index).windows[0]) as $wid | if $wid then "yabai -m window --focus \"" + ($wid | tostring) + "\"" else "skhd --key \"ctrl - " + (map(select(."is-native-fullscreen" == false)) | index(map(select(.index == $index))) + 1 % 10 | tostring) + "\"" end')"
+ctrl - 2 : index=2; eval "$(yabai -m query --spaces | jq --argjson index "${index}" -r '(.[] | select(.index == $index).windows[0]) as $wid | if $wid then "yabai -m window --focus \"" + ($wid | tostring) + "\"" else "skhd --key \"ctrl - " + (map(select(."is-native-fullscreen" == false)) | index(map(select(.index == $index))) + 1 % 10 | tostring) + "\"" end')"
+ctrl - 3 : index=3; eval "$(yabai -m query --spaces | jq --argjson index "${index}" -r '(.[] | select(.index == $index).windows[0]) as $wid | if $wid then "yabai -m window --focus \"" + ($wid | tostring) + "\"" else "skhd --key \"ctrl - " + (map(select(."is-native-fullscreen" == false)) | index(map(select(.index == $index))) + 1 % 10 | tostring) + "\"" end')"
+ctrl - 4 : index=4; eval "$(yabai -m query --spaces | jq --argjson index "${index}" -r '(.[] | select(.index == $index).windows[0]) as $wid | if $wid then "yabai -m window --focus \"" + ($wid | tostring) + "\"" else "skhd --key \"ctrl - " + (map(select(."is-native-fullscreen" == false)) | index(map(select(.index == $index))) + 1 % 10 | tostring) + "\"" end')"
+ctrl - 5 : index=5; eval "$(yabai -m query --spaces | jq --argjson index "${index}" -r '(.[] | select(.index == $index).windows[0]) as $wid | if $wid then "yabai -m window --focus \"" + ($wid | tostring) + "\"" else "skhd --key \"ctrl - " + (map(select(."is-native-fullscreen" == false)) | index(map(select(.index == $index))) + 1 % 10 | tostring) + "\"" end')"
+c
 
 #sudo yabai --load-sa
 
