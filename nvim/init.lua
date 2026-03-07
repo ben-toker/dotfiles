@@ -33,7 +33,14 @@ vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 
--- nvim-tree binds 
+--general binds
+
+-- Normal mode: Toggle comment for the current line
+vim.keymap.set('n', '<C-/>', 'gcc', { remap = true, desc = 'Toggle comment line' })
+
+-- Visual mode: Toggle comment for the selected block
+--
+vim.keymap.set('v', '<C-/>', 'gc', { remap = true, desc = 'Toggle comment block' })-- nvim-tree binds 
 vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-h>', '<leader>h', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-j>', '<leader>j', { noremap = true, silent = true })
