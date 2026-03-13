@@ -157,23 +157,40 @@ cmd + alt - f : yabai -m window --toggle zoom-parent
 cmd + alt - c : yabai -m window --grid 4:4:1:1:2:2
 cmd + alt - m : yabai -m window --minimize
 
-# Move focused window to space and follow focus
-shift + ctrl - 1 : yabai -m window --space 1; yabai -m space --focus 1
-shift + ctrl - 2 : yabai -m window --space 2; yabai -m space --focus 2
-shift + ctrl - 3 : yabai -m window --space 3; yabai -m space --focus 3
-shift + ctrl - 4 : yabai -m window --space 4; yabai -m space --focus 4
-shift + ctrl - 5 : yabai -m window --space 5; yabai -m space --focus 5
+# Move to Display 1 Spaces
+shift + ctrl - 1 : yabai -m window --space 1; ~/.config/yabai/switch_space.sh 1
+shift + ctrl - 2 : yabai -m window --space 2; ~/.config/yabai/switch_space.sh 2
+shift + ctrl - 3 : yabai -m window --space 3; ~/.config/yabai/switch_space.sh 3
+shift + ctrl - 4 : yabai -m window --space 4; ~/.config/yabai/switch_space.sh 4
+shift + ctrl - 5 : yabai -m window --space 5; ~/.config/yabai/switch_space.sh 5
+
+# Move to Display 2 Spaces
+shift + ctrl - 6 : yabai -m window --space 6; ~/.config/yabai/switch_space.sh 6
+shift + ctrl - 7 : yabai -m window --space 7; ~/.config/yabai/switch_space.sh 7
+shift + ctrl - 8 : yabai -m window --space 8; ~/.config/yabai/switch_space.sh 8
+shift + ctrl - 9 : yabai -m window --space 9; ~/.config/yabai/switch_space.sh 9
+shift + ctrl - 0 : yabai -m window --space 10; ~/.config/yabai/switch_space.sh 10
 
 # Relative move with wrap-around logic
 cmd + shift - j : yabai -m window --space prev || yabai -m window --space last; yabai -m space --focus prev || yabai -m space --focus last
 cmd + shift - l : yabai -m window --space next || yabai -m window --space first; yabai -m space --focus next || yabai -m space --focus first
 
-# Direct space jump (Hyprland style)
-ctrl - 1 : yabai -m space --focus 1
-ctrl - 2 : yabai -m space --focus 2
-ctrl - 3 : yabai -m space --focus 3
-ctrl - 4 : yabai -m space --focus 4
-ctrl - 5 : yabai -m space --focus 5
+# Display 1 (MacBook M1 Max): Spaces 1-5
+ctrl - 1 : ~/.config/yabai/switch_space.sh 1
+ctrl - 2 : ~/.config/yabai/switch_space.sh 2
+ctrl - 3 : ~/.config/yabai/switch_space.sh 3
+ctrl - 4 : ~/.config/yabai/switch_space.sh 4
+ctrl - 5 : ~/.config/yabai/switch_space.sh 5
+
+# Display 2 (External Monitor): Spaces 6-10
+ctrl - 6 : ~/.config/yabai/switch_space.sh 6
+ctrl - 7 : ~/.config/yabai/switch_space.sh 7
+ctrl - 8 : ~/.config/yabai/switch_space.sh 8
+ctrl - 9 : ~/.config/yabai/switch_space.sh 9
+ctrl - 0 : ~/.config/yabai/switch_space.sh 10
+
+# Move window to relative space (and follow)
+shift + ctrl - 1 : yabai -m window --space $(~/.config/yabai/switch_space.sh 1); yabai -m space --focus $(~/.config/yabai/switch_space.sh 1)
 
 # Tiling layouts
 ctrl - r : yabai -m space --rotate 90
