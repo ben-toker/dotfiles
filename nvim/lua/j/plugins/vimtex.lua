@@ -6,11 +6,10 @@ return {
       vim.g.vimtex_view_method = "Skim"
       vim.g.vimtex_quickfix_mode = 1
       vim.g.vimtex_quickfix_ignore_filters = {
-      'Underfull \\\\hbox',
-      'Overfull \\\\hbox',
-      'LaTeX Warning: .\\+ float specifier changed to',
-      'Package hyperref Warning: Token not allowed in a PDFDocEncoded string',
-    }
+        'Warning',
+        'Underfull',
+        'Overfull',
+      }
     end,
   },
 }
