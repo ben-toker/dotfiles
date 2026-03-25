@@ -50,18 +50,6 @@ vim.api.nvim_set_keymap('n', '<C-l>', '<leader>l', { noremap = true, silent = tr
 
 
 
--- nvim-ale config
-vim.cmd [[
-  let g:ale_linters = {
-      \ 'typescript': ['tsserver'],
-      \ 'typescriptreact': ['tsserver'],
-      \ }
-  let g:ale_fixers = {
-      \ 'typescript': ['prettier'],
-      \ 'typescriptreact': ['prettier'],
-      \ }
-  let g:ale_fix_on_save = 1
-]]
 
 -- telescope binds
 local builtin = require('telescope.builtin')
