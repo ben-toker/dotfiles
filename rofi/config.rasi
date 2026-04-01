@@ -1,0 +1,75 @@
+configuration {
+    modi:           "drun";
+    show-icons:     false;
+    drun-display-format: "{name}";
+    display-drun:   "";
+}
+
+* {
+    bg:         #1d2021;
+    bg-sel:     #3c3836;
+    fg:         #ebdbb2;
+    fg-dim:     #928374;
+    accent:     #fbf1c7;
+
+    font:                "Adwaita Mono 13";
+    background-color:    transparent;
+    text-color:          @fg;
+    border:              0;
+    margin:              0;
+    padding:             0;
+    spacing:             0;
+}
+
+window {
+    background-color:    @bg;
+    border-radius:       8px;
+    width:               560px;
+    padding:             8px;
+}
+
+inputbar {
+    children:            [prompt, entry];
+    padding:             8px 10px;
+    spacing:             6px;
+    border-radius:       6px;
+    background-color:    #282828;
+    margin:              0 0 6px 0;
+}
+
+prompt {
+    text-color:          @fg-dim;
+    enabled:             true;
+}
+
+entry {
+    text-color:          @fg;
+    placeholder:         "search...";
+    placeholder-color:   @fg-dim;
+}
+
+listview {
+    lines:               8;
+    spacing:             2px;
+    scrollbar:           false;
+}
+
+element {
+    padding:             6px 10px;
+    border-radius:       6px;
+}
+
+element normal normal {
+    background-color:    @bg-sel;
+    text-color:          @accent;
+}
+
+element selected normal {
+    background-color:    transparent;
+    text-color:          @fg-dim;
+}
+
+element-text {
+    background-color:    transparent;
+    text-color:          inherit;
+}

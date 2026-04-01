@@ -1,0 +1,86 @@
+* {
+    font-family: "Adwaita Mono", monospace;
+    font-size: 12px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: rgba(18, 18, 18, 0.85);
+    color: #cccccc;
+    border-radius: 8px;
+}
+
+/* ── Workspaces ─────────────────────────────────────────────────────────── */
+
+#workspaces {
+    margin: 0 4px;
+}
+
+#workspaces button {
+    background: transparent;
+    color: #666666;
+    padding: 0 8px;
+    border-radius: 6px;
+    margin: 3px 1px;
+    transition: all 0.15s ease;
+}
+
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #aaaaaa;
+}
+
+#workspaces button.active {
+    background: rgba(255, 255, 255, 0.12);
+    color: #eeeeee;
+}
+
+#workspaces button.urgent {
+    background: rgba(220, 80, 80, 0.4);
+    color: #ff6b6b;
+}
+
+/* ── Clock ──────────────────────────────────────────────────────────────── */
+
+#clock {
+    color: #dddddd;
+    padding: 0 12px;
+}
+
+/* ── Right modules ──────────────────────────────────────────────────────── */
+
+#pulseaudio,
+#network,
+#battery,
+#tray {
+    color: #999999;
+    padding: 0 10px;
+}
+
+#pulseaudio:hover,
+#network:hover,
+#battery:hover {
+    color: #cccccc;
+}
+
+#pulseaudio.muted {
+    color: #555555;
+}
+
+#battery.warning {
+    color: #e5c07b;
+}
+
+#battery.critical {
+    color: #e06c75;
+}
+
+#tray {
+    padding: 0 6px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
