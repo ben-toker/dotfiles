@@ -48,7 +48,8 @@
         "format-wifi": "{essid} 󰤨",
         "format-ethernet": "eth 󰈀",
         "format-disconnected": "offline 󰤭",
-        "tooltip-format": "{ifname}: {ipaddr}"
+        "tooltip-format": "{ifname}: {ipaddr}",
+        "on-click": "~/.config/rofi/wifi.sh"
     },
 
     "battery": {

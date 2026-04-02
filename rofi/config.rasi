@@ -57,16 +57,21 @@ listview {
 element {
     padding:             6px 10px;
     border-radius:       6px;
+    border:              1px;
+    border-color:        transparent;
 }
 
-element normal normal {
+element normal normal,
+element alternate normal {
     background-color:    @bg-sel;
-    text-color:          @accent;
+    text-color:          @fg;
 }
 
-element selected normal {
-    background-color:    transparent;
-    text-color:          @fg-dim;
+element selected normal,
+element alternate selected {
+    background-color:    @bg-sel;
+    text-color:          @fg;
+    border-color:        rgba(255, 255, 255, 0.6);
 }
 
 element-text {
