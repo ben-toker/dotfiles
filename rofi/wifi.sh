@@ -21,7 +21,8 @@ scan() {
             if (ssid == "--") next
             printf "%-40s  %s%%  %s\n", ssid, sig, (sec=="--" ? "open" : "secure")
           }' \
-        | sort -t'%' -k1 -rn
+        | sort -t'%' -k1 -rn \
+        | awk '!seen[$1]++'
 }
 
 # Get saved connections
