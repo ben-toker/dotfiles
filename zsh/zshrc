@@ -5,6 +5,7 @@ ZSH_THEME=""
 
 plugins=(
     git
+    z
     zsh-autosuggestions
     zsh-syntax-highlighting
     zsh-completions
@@ -34,3 +35,5 @@ export VISUAL=nvim
 
 # Starship prompt
 eval "$(starship init zsh)"
+
+export PATH=$PATH:/home/ben/.spicetify
