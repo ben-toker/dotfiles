@@ -18,17 +18,14 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("j.plugins")
 
 vim.o.background = "dark" -- or "light" for light mode
---vim.cmd([[colorscheme gruvbox]])
-vim.cmd([[colorscheme monokai-pro]])
+vim.cmd([[colorscheme gruvbox-material]])
+--vim.cmd([[colorscheme monokai-pro]])
 
-vim.opt.termguicolors=true
+vim.opt.termguicolors = true
 
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.expandtab = true
-vim.opt.shiftwidth = 2
-vim.opt.tabstop = 2
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
@@ -40,7 +37,7 @@ vim.keymap.set('n', '<C-/>', 'gcc', { remap = true, desc = 'Toggle comment line'
 
 -- Visual mode: Toggle comment for the selected block
 --
-vim.keymap.set('v', '<C-/>', 'gc', { remap = true, desc = 'Toggle comment block' })-- nvim-tree binds 
+vim.keymap.set('v', '<C-/>', 'gc', { remap = true, desc = 'Toggle comment block' }) -- nvim-tree binds
 vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-h>', '<leader>h', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-j>', '<leader>j', { noremap = true, silent = true })
@@ -58,7 +55,7 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
--- vimtex 
+-- vimtex
 vim.g["vimtex_view_method"] = "skim"
 vim.g["vimtex_view_skim_sync"] = 1
 vim.g["vimtex_view_skim_activate"] = 1
@@ -69,24 +66,27 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.schedule(function()
       -- Force the underscore to be a 'Label' (neutral color) inside TikZ
       vim.cmd([[syntax match texSpecialChar /_/ containedin=texTikzZone]])
-      
+
       -- Specifically tell the error engine to ignore underscores in this zone
       vim.cmd([[syntax cluster texErrorGroup add=texSpecialChar]])
-      
+
       -- Restore general error highlighting that 'tex_no_error' might have killed
       vim.cmd([[highlight link texError Error]])
     end)
   end,
 })
+-- diagnostics
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Prev diagnostic' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Next diagnostic' })
+
 -- remap Normal‑mode cursor keys to O‑K‑L‑; block
-vim.keymap.set('n', 'o', 'k', { noremap = true, silent = true })   -- o → up
-vim.keymap.set('n', 'k', 'h', { noremap = true, silent = true })   -- k → left
-vim.keymap.set('n', 'l', 'j', { noremap = true, silent = true })   -- l → down
-vim.keymap.set('n', ';', 'l', { noremap = true, silent = true })   -- ; → right
+vim.keymap.set('n', 'o', 'k', { noremap = true, silent = true }) -- o → up
+vim.keymap.set('n', 'k', 'h', { noremap = true, silent = true }) -- k → left
+vim.keymap.set('n', 'l', 'j', { noremap = true, silent = true }) -- l → down
+vim.keymap.set('n', ';', 'l', { noremap = true, silent = true }) -- ; → right
 
 -- (optional) mirror in Visual mode if you want selection movement too
 vim.keymap.set('v', 'o', 'k', { noremap = true, silent = true })
 vim.keymap.set('v', 'k', 'h', { noremap = true, silent = true })
 vim.keymap.set('v', 'l', 'j', { noremap = true, silent = true })
 vim.keymap.set('v', ';', 'l', { noremap = true, silent = true })
-
