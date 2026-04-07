@@ -22,8 +22,11 @@ copy ~/.config/hypr/hyprlock.conf  "$DOTFILES/hypr/hyprlock.conf"
 copy ~/.config/hypr/sleep-hook.sh  "$DOTFILES/hypr/sleep-hook.sh"
 
 # ── Waybar ────────────────────────────────────────────────────────────────────
-copy ~/.config/waybar/config.jsonc "$DOTFILES/waybar/config.jsonc"
-copy ~/.config/waybar/style.css    "$DOTFILES/waybar/style.css"
+copy ~/.config/waybar/config.jsonc    "$DOTFILES/waybar/config.jsonc"
+copy ~/.config/waybar/style.css       "$DOTFILES/waybar/style.css"
+copy ~/.config/waybar/style-light.css "$DOTFILES/waybar/style-light.css"
+copy ~/.config/waybar/style-dark.css  "$DOTFILES/waybar/style-dark.css"
+copy ~/.config/waybar/toggle-theme.sh "$DOTFILES/waybar/toggle-theme.sh"
 
 # ── Rofi ──────────────────────────────────────────────────────────────────────
 copy ~/.config/rofi/config.rasi    "$DOTFILES/rofi/config.rasi"
@@ -49,6 +52,9 @@ sudo cp /etc/keyd/default.conf "$DOTFILES/keyd/default.conf" && echo "OK: /etc/k
 
 # ── TLP (requires sudo) ───────────────────────────────────────────────────────
 sudo cp /etc/tlp.d/99-thinkpad-t480.conf "$DOTFILES/tlp/99-thinkpad-t480.conf" && echo "OK: /etc/tlp.d/99-thinkpad-t480.conf" || echo "SKIP: tlp (sudo failed)"
+
+# ── modprobe (requires sudo) ──────────────────────────────────────────────────
+sudo cp /etc/modprobe.d/ucsi_acpi-blacklist.conf "$DOTFILES/modprobe/ucsi_acpi-blacklist.conf" && echo "OK: /etc/modprobe.d/ucsi_acpi-blacklist.conf" || echo "SKIP: modprobe (sudo failed)"
 
 echo ""
 echo "Done. Run 'git diff' to review changes, then commit."

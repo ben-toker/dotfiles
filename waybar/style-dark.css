@@ -9,8 +9,8 @@
 
 window#waybar,
 window#waybar > box {
-    background-color: rgba(220, 220, 220, 0.95);
-    background: rgba(220, 220, 220, 0.95);
+    background-color: rgba(18, 18, 18, 0.85);
+    background: rgba(18, 18, 18, 0.85);
     border-radius: 12px;
 }
 
@@ -23,7 +23,7 @@ window#waybar > box {
 #workspaces button,
 box#workspaces button label {
     background: transparent;
-    color: #111111;
+    color: #666666;
     padding: 0 8px;
     border-radius: 6px;
     margin: 3px 1px;
@@ -31,24 +31,24 @@ box#workspaces button label {
 }
 
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.08);
-    color: #444444;
+    background: rgba(255, 255, 255, 0.08);
+    color: #aaaaaa;
 }
 
 #workspaces button.active {
-    background: rgba(0, 0, 0, 0.10);
-    color: #111111;
+    background: rgba(255, 255, 255, 0.12);
+    color: #eeeeee;
 }
 
 #workspaces button.urgent {
     background: rgba(220, 80, 80, 0.4);
-    color: #cc2222;
+    color: #ff6b6b;
 }
 
 /* ── Clock ──────────────────────────────────────────────────────────────── */
 
 #clock {
-    color: #222222;
+    color: #dddddd;
     padding: 0 12px;
 }
 
@@ -59,18 +59,18 @@ box#workspaces button label {
 #network,
 #battery,
 #tray {
-    color: #555555;
+    color: #999999;
     padding: 0 10px;
 }
 
 #pulseaudio:hover,
 #network:hover,
 #battery:hover {
-    color: #222222;
+    color: #cccccc;
 }
 
 #pulseaudio.muted {
-    color: #aaaaaa;
+    color: #555555;
 }
 
 #battery.charging,
