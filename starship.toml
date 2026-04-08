@@ -2,5 +2,19 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 add_newline = true
-continuation_prompt = "[▸▹ ](dimmed white)"
+continuation_prompt = "[▸▹ ](#a89984)"
+
+[directory]
+style = "bold #fabd2f"
+
+[git_branch]
+style = "bold #d3869b"
+format = "on [$symbol$branch(:$remote_branch)]($style) "
+
+[git_status]
+style = "bold #fe8019"
+
+[character]
+success_symbol = "[>](bold #b8bb26)"
+error_symbol = "[>](bold #fb4934)"
 
