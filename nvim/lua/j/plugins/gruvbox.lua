@@ -3,5 +3,8 @@ return {
   name = 'gruvbox-material',
   lazy = false,
   priority = 1000,
-  opts = {},
+  opts = {
+    contrast = 'hard',
+    background = { dark = 'hard' },
+  },
 }

@@ -18,8 +18,8 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("j.plugins")
 
 vim.o.background = "dark" -- or "light" for light mode
-vim.cmd([[colorscheme gruvbox-material]])
---vim.cmd([[colorscheme monokai-pro]])
+--vim.cmd([[colorscheme gruvbox-material]])
+vim.cmd([[colorscheme monokai-pro]])
 
 vim.opt.termguicolors = true
 
@@ -55,10 +55,6 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
--- vimtex
-vim.g["vimtex_view_method"] = "skim"
-vim.g["vimtex_view_skim_sync"] = 1
-vim.g["vimtex_view_skim_activate"] = 1
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "tex",
