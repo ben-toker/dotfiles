@@ -43,7 +43,18 @@ return {
     },
   },
   override = function(scheme)
-    return {}
+    return {
+      Normal = { bg = "#191919" },
+      NormalNC = { bg = "#191919" },
+      NormalFloat = { bg = "#191919" },
+      FloatBorder = { bg = "#191919" },
+      SignColumn = { bg = "#191919" },
+      EndOfBuffer = { bg = "#191919" },
+      NvimTreeNormal = { bg = "#191919" },
+      NvimTreeNormalNC = { bg = "#191919" },
+      NvimTreeEndOfBuffer = { bg = "#191919" },
+      NvimTreeWinSeparator = { bg = "#191919", fg = "#191919" },
+    }
   end,
   override_palette = function(filter)
     return {}
