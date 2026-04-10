@@ -71,6 +71,7 @@
     "custom/theme": {
         "exec": "cat ~/.config/waybar/theme-state | sed 's/light/󰖨/;s/dark/󰖔/'",
         "on-click": "~/.config/waybar/toggle-theme.sh",
-        "interval": 60
+        "interval": 60,
+        "signal": 8
     }
 }
