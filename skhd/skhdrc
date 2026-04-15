@@ -204,3 +204,6 @@ cmd - return : open -a iTerm
 cmd + shift - return : open -a "Visual Studio Code"
 cmd + shift - a : open -a "zen"
 cmd + shift - m : open -a "Spotify"
+
+# Toggle Simple Bar and adjust external display padding
+cmd + alt - b : ~/.config/skhd/scripts/toggle_bar.sh
