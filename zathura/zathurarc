@@ -1,0 +1,4 @@
+set scroll-step 5
+set scroll-hstep 5
+set scroll-full-overlap 0.05
+set scroll-page-aware true
