@@ -10,11 +10,6 @@ if [ "$current_spaces" -lt "$desired_spaces" ]; then
     done
 fi
 
-# Signal to force BSP whenever a space is created or focused
-yabai -m signal --add event=space_changed action="yabai -m space --layout bsp"
-yabai -m signal --add event=display_changed action="yabai -m space --layout bsp"
-
-
 # bsp or float (default: float)
 yabai -m config layout bsp
 
@@ -48,7 +43,6 @@ yabai -m rule --add app="^App Store$" manage=off
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Messages$" manage=off
 yabai -m rule --add app="^Finder$" manage=off
- switch focus
 
 ## -- Switch between spaces even if full screen
 #ctrl - 1 : index=1; eval "$(yabai -m query --spaces | jq --argjson index "${index}" -r '(.[] | select(.index == $index).windows[0]) as $wid | if $wid then "yabai -m window --focus \"" + ($wid | tostring) + "\"" else "skhd --key \"ctrl - " + (map(select(."is-native-fullscreen" == false)) | index(map(select(.index == $index))) + 1 % 10 | tostring) + "\"" end')"
