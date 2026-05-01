@@ -7,3 +7,6 @@ add_newline = true
 # Disable the package module, hiding it from the prompt completely
 [package]
 disabled = true
+
+[directory]
+read_only = " \uf023"

@@ -1,3 +1,33 @@
-.DS_Store
-StardewValley/
-gh/
+# Ignore everything by default
+*
+
+# User-configured tools
+!git/
+!git/**
+!gtk-3.0/
+!gtk-3.0/**
+!helix/
+!helix/**
+!hypr/
+!hypr/**
+!kitty/
+!kitty/**
+!mako/
+!mako/**
+!neofetch/
+!neofetch/**
+!nvim/
+!nvim/**
+!rofi/
+!rofi/**
+!waybar/
+!waybar/**
+waybar/theme-state
+!zsh/
+!zsh/**
+!claude/
+!claude/**
+!starship.toml
+!mimeapps.list
+!.gitignore
+!README.md

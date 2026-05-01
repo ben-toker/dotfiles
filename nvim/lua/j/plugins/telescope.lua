@@ -2,7 +2,8 @@ return {
   {
 	'nvim-telescope/telescope.nvim',
 	dependencies = {
-		{ 'BurntSushi/ripgrep', 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
+		'BurntSushi/ripgrep',
+		{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 	},
 	config = function(lazy, opts) 
 		local telescope = require('telescope')

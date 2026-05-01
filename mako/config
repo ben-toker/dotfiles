@@ -1,0 +1,13 @@
+background-color=#282828
+text-color=#ebdbb2
+border-color=#504945
+border-radius=6
+border-size=1
+font=monospace 10
+width=350
+max-visible=5
+padding=12
+margin=8
+
+[urgency=high]
+border-color=#cc241d
