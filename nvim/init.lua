@@ -39,10 +39,14 @@ vim.keymap.set('n', '<C-/>', 'gcc', { remap = true, desc = 'Toggle comment line'
 --
 vim.keymap.set('v', '<C-/>', 'gc', { remap = true, desc = 'Toggle comment block' }) -- nvim-tree binds
 vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-h>', '<leader>h', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-j>', '<leader>j', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-k>', '<leader>k', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-l>', '<leader>l', { noremap = true, silent = true })
+-- terminal-mode escape so window-nav keys work from a :terminal buffer
+vim.keymap.set('t', '<C-\\><C-n>', [[<C-\><C-n>]])
+
+-- auto-enter insert mode when focusing a terminal window
+vim.api.nvim_create_autocmd({ 'TermOpen', 'BufWinEnter', 'WinEnter' }, {
+  pattern = 'term://*',
+  command = 'startinsert',
+})
 
 
 
@@ -74,6 +78,40 @@ vim.api.nvim_create_autocmd("FileType", {
 -- diagnostics
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Prev diagnostic' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Next diagnostic' })
+
+vim.diagnostic.config({
+  virtual_text = true,
+  underline = false,
+  signs = true,
+  severity_sort = true,
+  update_in_insert = false,
+  float = { border = 'rounded', source = true },
+})
+
+-- give float windows a distinct background so they stand out from the terminal
+local function style_floats()
+  vim.api.nvim_set_hl(0, 'NormalFloat', { bg = '#3a3741' })
+  vim.api.nvim_set_hl(0, 'FloatBorder', { bg = '#3a3741', fg = '#a9a1b3' })
+  vim.api.nvim_set_hl(0, 'FloatTitle',  { bg = '#3a3741', fg = '#ffd866' })
+end
+style_floats()
+vim.api.nvim_create_autocmd('ColorScheme', { callback = style_floats })
+
+-- show diagnostic float when the cursor rests on an error line
+vim.opt.updatetime = 300
+vim.api.nvim_create_autocmd('CursorHold', {
+  callback = function()
+    vim.diagnostic.open_float(nil, { focus = false, scope = 'cursor' })
+  end,
+})
+
+-- cargo as the :make program for Rust buffers (used by :Make test / :Make clippy)
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'rust',
+  callback = function()
+    vim.cmd('compiler cargo')
+  end,
+})
 
 -- remap Normal‑mode cursor keys to O‑K‑L‑; block
 vim.keymap.set('n', 'o', 'k', { noremap = true, silent = true }) -- o → up
