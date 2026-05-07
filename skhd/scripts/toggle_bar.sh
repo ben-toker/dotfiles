@@ -1,11 +1,17 @@
 #!/bin/bash
 
-# Toggle Simple Bar (Übersicht) and adjust yabai padding on external displays only.
+# Toggle Simple Bar (Übersicht) and adjust yabai padding.
+# If multiple displays are connected, act on all non-primary displays (external only).
+# If only one display is connected (e.g. lid closed, docked to external), act on it.
 
-# Get spaces on external displays (index > 1)
-EXT_SPACES=$(yabai -m query --displays | jq -r '[.[] | select(.index > 1) | .spaces[]] | .[]')
+DISPLAY_COUNT=$(yabai -m query --displays | jq 'length')
 
-# No external display — do nothing
+if [ "$DISPLAY_COUNT" -gt 1 ]; then
+    EXT_SPACES=$(yabai -m query --displays | jq -r '[.[] | select(.index > 1) | .spaces[]] | .[]')
+else
+    EXT_SPACES=$(yabai -m query --displays | jq -r '[.[] | .spaces[]] | .[]')
+fi
+
 [ -z "$EXT_SPACES" ] && exit 0
 
 # Determine current bar state from Übersicht
