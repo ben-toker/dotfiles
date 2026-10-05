@@ -80,41 +80,35 @@ return {
     config = function()
       -- LSP configuration
       local lsp_zero = require('lsp-zero')
-      lsp_zero.extend_lspconfig()
 
       lsp_zero.on_attach(function(client, bufnr)
         -- Default keybindings for LSP
         lsp_zero.default_keymaps({buffer = bufnr})
       end)
 
+      -- Advertise nvim-cmp's completion capabilities to every server
+      vim.lsp.config('*', {
+        capabilities = require('cmp_nvim_lsp').default_capabilities(),
+      })
+
+      -- Per-server settings (merged on top of nvim-lspconfig's defaults)
+      vim.lsp.config('lua_ls', lsp_zero.nvim_lua_ls())
+
+      vim.lsp.config('rust_analyzer', {
+        settings = {
+          ["rust-analyzer"] = {
+            assist = {
+              importGranularity = "module",
+              importPrefix = "by_self",
+            },
+          },
+        },
+      })
+
+      -- Installs the servers below and calls vim.lsp.enable() on every
+      -- server Mason has installed
       require('mason-lspconfig').setup({
         ensure_installed = { 'pyright', 'rust_analyzer', 'clangd', 'jdtls', 'gopls'},
-        handlers = {
-          -- Default handler for all servers
-          function(server_name)
-            require('lspconfig')[server_name].setup({})
-          end,
-
-          -- Custom handler for `lua_ls`
-          lua_ls = function()
-            local lua_opts = lsp_zero.nvim_lua_ls()
-            require('lspconfig').lua_ls.setup(lua_opts)
-          end,
-
-          -- Custom handler for `rust_analyzer`
-          rust_analyzer = function()
-            require('lspconfig').rust_analyzer.setup({
-              settings = {
-                ["rust-analyzer"] = {
-                  assist = {
-                    importGranularity = "module",
-                    importPrefix = "by_self",
-                  },
-                },
-              },
-            })
-          end,
-        },
       })
 
     end
